@@ -29,26 +29,31 @@ public class BillServiceImp implements BillServiceInterface {
 	private BillRepository billDao;
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<BillModel> listOfBills() {
 		return billDao.findAll();
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public BillModel findByIdBill(Long id) {
 		return billDao.findById(id).orElse(null);
 	}
 
 	@Override
+	@Transactional
 	public BillModel saveBill(BillModel billEntity) {
 		return billDao.save(billEntity);
 	}
 
 	@Override
+	@Transactional
 	public void deleteBill(Long id) {
 		billDao.deleteById(id);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public BillModel findBillByIdAndClientId(Long clientId, Long billId) {
 		return billDao.findBillByIdAndClientId(clientId, billId);
 	}
@@ -60,6 +65,7 @@ public class BillServiceImp implements BillServiceInterface {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public ByteArrayInputStream pdfOfBills(BillModel bill) {
 		Document document = new Document();
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
