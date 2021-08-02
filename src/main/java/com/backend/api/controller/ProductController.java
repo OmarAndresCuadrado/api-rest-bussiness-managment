@@ -52,7 +52,7 @@ public class ProductController {
 
 	@GetMapping("/product/test")
 	public String watch() {
-		String newDevelopment = "HELLOU WORLD";
+		String newDevelopment = "LAST CHANGE";
 		return newDevelopment;
 
 	}
